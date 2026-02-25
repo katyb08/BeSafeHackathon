@@ -109,10 +109,11 @@
 
 ### Mobile View (iPhone Mode)
 ![BeSafe Registration Page](screenshots/RegistrationPage.png)
+![BeSafe Journal Page](screenshots/verificationMail.png)
 ![BeSafe Login Page](screenshots/LoginPage.png)
 ![BeSafe Journal Page](screenshots/JournalPage.png)
-![BeSafe Journal Page](screenshots/JournalPage.png)
+![BeSafe Journal Page](screenshots/JournalPageAiPrompt.png)
 
-
+verificationMail.png
 ### Video Walkthrough
 [Feature Demo: Triggering Parent Alerts after 4 Days of Persistent Low Emotional State.](screenshots/4DaysOfStruggle.mp4)
