@@ -1,134 +1,106 @@
-# QueenB X AppsFlyer - BeSafe Hackathon 2026
+**"The Guardian" - QueenB X AppsFlyer - BeSafe Hackathon 2026**
 
-This project template is designed for junior developers aimed at gaining hands-on experience in full-stack development. 
-This project includes a Node.js server with Express and a React client (powered by Vite), providing an opportunity to engage in frontend development, backend development, and API integration.
-Specifically the template is a full-stack MERN application for managing a library of rubber ducks - but you can modify it and build a library application of your choice.
+**"The Guardian" - Digital Emotional Notebook for Kids**
 
-## Introduction
-This template includes a simple feature to display a random rubber duck from example READ ONLY database. 
-This feature demonstrates the integration of the frontend with the backend and can be used to test if your setup is working correctly.
+"The Guardian" is a full-stack application developed for the QueenB X AppsFlyer 2026 Hackathon. It is designed to provide children with a safe space to document their daily emotions while ensuring parental oversight and verification.
 
-1. Client:
-   - The home page contains a button labeled `Show Random Duck`.
-   - When clicked, this button sends a request to the backend to fetch a random rubber duck.
-   - The details of the random rubber duck, including its name and image, are displayed on the page.
-2. Backend:
-   - The server has an endpoint `/api/rubberDucks/random` that selects a random rubber duck from the database and returns its details in the response.
-   - The server contains more endpoints, but without corresponding implementation in the client. These endpoints are to set example of more types of requests.
+**Project Goals**
+   * Parent-Child Dual Registration: Securely link child accounts to a parent's email, requiring a 6-digit verification code sent to the parent for account activation.
+   * Digital Emotional Notebook: Provide a structured, private journal where children can answer guided prompts (e.g., "How did you feel today?") and engage in free-text writing.
+   * Sentiment Interpretation: Utilize an AI agent to analyze the emotional tone and context of a child's entries without interfering with the writing process.
+   * Proactive Parental Alerts: Implement an automated system that notifies parents via the emailService if the AI detects significant emotional distress or specific "flags" in the text.
+   * Child-Friendly Personalization: Enhance engagement through customizable child avatars and a supportive UI designed specifically for younger users.
 
-## Installation
+**Privacy & Ethics**
+   * **Silent Observation Only:** The AI agent functions strictly as a background observer; there is no scenario where a child "chats" or communicates with the AI.
+   * **Zero AI-to-Child Feedback:** To ensure the notebook remains a natural space for expression, the AI never provides direct responses, advice, or feedback to the child.
+   * **Data Sensitivity:** Analysis is performed solely to provide context for parents; children's raw entries are treated as private data within the application.
+   * **Safety First Architecture:** By removing direct interaction between the child and the AI, we eliminate the risk of hallucinated or inappropriate AI responses being shown to the user.
 
-### Prerequisites
+**Tech Stack**
 
-- [Node.js](https://nodejs.org/en) 
-  - Version 20.x or higher required (latest LTS recommended)
-- `npm` (will be typically installed automatically when you install Node.js above)
-  -  Version 10.x or higher required (get the latest by running `npm install -g npm@latest --no-optional`)
+* Frontend: React (Vite)
 
-### Clone the Repository
-To get started with this project, you need to clone the repository to your local machine. Follow these steps:
-1. Create a project from this repository by clicking on `Use this template` -> `Create a new repository` (more info [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)) - only ONCE per project
-1. Clone the new Repository: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
+* Backend: Node.js & Express
 
-### Server Setup
-1. Navigate to the server directory: `cd server`
-1. Install server dependencies: `npm install`
+* Database: MongoDB (via Mongoose)
 
-### Client Setup
-1. Navigate to the client directory: `cd ../client`
-1. Install client dependencies: `npm install`
+* Authentication: JWT (JSON Web Tokens) & Bcryptjs for password hashing
 
-## Configuration
+* Services: Nodemailer for parental email verification
 
-### Environment Variables
-Environment variables are used to configure your application without hardcoding sensitive information into your code. For this project, you need to set up the following environment variables in `.env` files located both in the `server` directory and `client` directory.
+**Key Features & Workflow**
 
-#### Configure the Backend (server)
+* Registration: The child signs up with their email and their parent's email. A verification code is automatically generated and emailed to the parent.
 
-Make a copy of the `.env.example` file under the `server` folder and name it `.env`. This file contains the following environment variables (you don't need to touch them at this point):
-   - `CLIENT_URL` - this should match the URL of the client, which is what you'll see at the address bar of your browser after running your client (via `npm start`).
-   - `PORT` - This variable defines the port on which your Express server will run. By default, this is set to `5000`, but you can change it to any available port number.
+* Verification: The child enters the code provided by the parent. The account status is updated to isVerified: true.
 
-#### Configure the Frontend (client)
+* Digital Journaling: Once logged in, children can access their JournalPage.
 
-Make a copy of the `.env.example` file under the `client` folder and name it `.env`. 
-This file contains the following environment variable (you don't need to touch them at this point):
+* AI Analysis: The textAnalysisController processes free-text entries to determine moods or flags.
 
-* `VITE_SERVER_API_URL`: This variable contains the URL of your backend API. It tells your client where to send requests to interact with the server. By default, this should be set to http://localhost:5000/, but you should change it to match your server's actual URL if different (where 5000 is the `PORT` you defined in the server `.env` file above).
+* Personalization: Children can choose and update their unique avatars.
 
-## Usage
+**Project Structure**
 
-This section explains how to use the application once it’s set up and configured. Follow these steps to interact with both the client and server components of the application.
+**Client Directory (client/)** - Contains the React (Vite) frontend application designed for the digital notebook experience.
 
-### Start the Server
-1. Open a terminal in the root folder of the cloned repository, and navigate to the `server` directory: `cd server`
-1. Start the Express server in development mode: `npm run dev`
-   - By default, the server will run on `http://localhost:5000` (see configuration section above)
+* package.json: Lists the client-side dependencies (like react-router-dom) and scripts for managing the React application.
 
-### Run the Client
-1. Open a **new** terminal in the root folder of the cloned repository, and navigate to the `client` directory: `cd client`
+* .env: Stores environment variables, specifically the VITE_SERVER_API_URL used to communicate with the Node.js backend.
 
-2. Run the Frontend Client: `npm run dev`
-   - A new browser window with the client application should open (if you close the tab, you can return to it by navigating to http://localhost:3000/ by default)
+* index.html: The main HTML entry point where the React application is mounted.
 
-### Test the Application
+* public/: Contains static assets like the site favicon that are not processed by the build pipeline.
 
-   - Click the `Show Random Duck` button to retrieve a random duck from the database and display its details on the screen.
-   - This feature helps verify that your frontend can communicate with the backend. If you see the random duck's details displayed on the page, your setup is working properly.
-   - You may also use an API client (like [Postman](https://www.postman.com/)) to directly test your API endpoints.
+* src/: Contains the source code for the BeSafe frontend.
 
-**Please report any issues or provide feedback for further improvements!**
+* api/: Centralized API configurations (e.g., authApi.js) for handling network requests.
 
-### Stopping the Servers
+* assets/: Contains processed images, including the child avatars (bunny.png, cat.png, dog.png, lion.png) used in the Profile Page.
 
-- **Stop the Express Server**: In the terminal where the server is running, press `Ctrl + C` to stop the server.
-- **Stop the React Client**: In the terminal where the client is running, press `Ctrl + C` to stop the client.
+* components/: Reusable UI modules, including specialized folders for Journal inputs and Stickers, as well as common components like LoginForm.jsx and RegisterForm.jsx.
 
-### Troubleshooting
+* hooks/: Custom React hooks for encapsulating complex logic, such as useLogin.js, useRegister.js, and useVerify.js for the child-parent flow.
 
-Ensure backend and frontend configurations (`.env` files) are correct.
+* pages/: Individual view components representing application routes:
+    * RegisterPage: The main entry point for new users.
+    * LoginPage: Secure portal for verified users.
+    * VerificationPage: Where children enter the 6-digit code sent to their parents.
+    * JournalPage: The digital notebook interface for logging daily emotions and free text.
+    * ProfilePage: Where users can view their status and update their avatars.
+    
+* services/: Contains api.js (Axios configuration) and journalApi.js for handling notebook-specific business logic.
 
-- **Server Issues**:
-  - Ensure that the React development server is running and that you have no conflicting applications using port 3000.
-  - Check the terminal for error messages 
+* styles/: Contains global and component-specific CSS modules (e.g., App.module.css) to maintain a kid-friendly UI.
 
-- **Client Issues**:
-  - Check the browser dev tools console for errors if the client is not displaying correctly (recommended: https://reactjs.org/link/react-devtools).
-  - Check the browser dev tools network logs for failed requests
+* utils/: Utility functions, notably validation.js for checking child/parent email formats and password strength.
 
-## Project Structure
+* App.jsx: The main component setting up the application layout, navigation, and Routes.
 
-### Client Directory (`client/`)
-Contains the React (Vite) frontend application.
-- `package.json`: Lists the client-side dependencies and scripts for managing the React application.
-- `.env`: Stores environment variables like the API endpoint URL.
-- `index.html`: Main HTML page hosting all the React components of the application (frontend entry point)
-- `public/`: static assets that do not need to be processed by Vite's build pipeline. These files are copied as-is to the build output directory. In our case, the HTML's favicon.
-- `src/`: Contains the source code for the React application.
-   - `assets/`: assets that are part of the source code and need to be processed by Vite's build pipeline. This includes images, fonts, and other files that might be imported into your JS or CSS files. In our case, the QueenB summer camp logo.
-   - `components/`: Reusable UI components such as buttons, forms, and other elements.
-   - `context/`: Contains the React context for the ducks, responsible for pulling the current duck from the API
-   - `pages/`: Page components that represent different routes in the application.
-   - `services/`: Services for making API calls and handling business logic.
-   - `styles/`: CSS and styling files for the application.
-   - `App.jsx`: The main React component that sets up routing and renders the application.
-   - `index.jsx`: The entry point for the React application, responsible for rendering the App component into the DOM.
-      
-### Server Directory (`server/`)
-Contains the Node.js / Express backend application.
-- `package.json`: Lists the server-side dependencies and scripts for managing the Node.js application.
-- `.env`: Stores environment variables like database connection strings and server port.
-- `server.js`: The main server file that sets up Express, connects to the database, and starts the server (backend entry point).
-- `controllers/`: Contains the logic for handling API requests and responses.
-- `data/`: Contains the initial duck data (readonly database)
-- `images/`: Contains the duck images referenced by the duck data above
-- `routes/`: Defines the API endpoints and maps them to controller functions.
+* index.jsx: The application entry point that wraps App in BrowserRouter and StrictMode.
 
-## Best practices & Teamwork
-[Full guide](BestPractices.md)
+**Server Directory (server/)**
 
-## Support
+* package.json: Lists server-side dependencies, including bcryptjs for security and nodemailer for parental verification emails.
 
-For any issues please contact us via [mail](mailto:queenb.community@gmail.com) or open an issue.
+* server.js: The main entry point that initializes the Express server, establishes the MongoDB connection, and mounts all application routes.
 
-**Happy Coding! :)**
+* controllers/: Contains the core business logic for handling client requests:
+   * authController.js: Manages the multi-step registration flow (child signup/parent email), verification code logic, and secure user login.
+   * journalController.js: Handles the creation, retrieval, and organization of a child’s digital journal entries.
+   * textAnalysisController.js: Coordinates with the AI agent to analyze free-text entries for emotional context.
+
+* middleware/: Contains functions that run during the request-response cycle, such as errorHandler.js for uniform error reporting and middleware.js for JWT authentication checks.
+
+* models/: Defines the data structure using Mongoose schemas:
+   * User.js: Stores account details, including child/parent email links and verification status.
+   * journal.js: Defines the structure for emotional logs, mood selections, and AI-generated feedback.
+    
+* routes/: Maps API endpoints (e.g., /api/auth) to their specific controller functions.
+
+* services/: Houses external utility logic:
+   * emailService.js: Dedicated logic for sending 6-digit verification codes to parents.
+   * journalLogic.js: Backend helper functions for processing notebook data.
+
+* utils/: General helper files, such as emailTemplates.js for consistent, child-friendly email communication.
