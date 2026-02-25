@@ -38,8 +38,8 @@ AI Analysis: The textAnalysisController processes free-text entries to determine
 Personalization: Children can choose and update their unique avatars.
 
 **Project Structure**
-**Client Directory (client/)**
-Contains the React (Vite) frontend application designed for the digital notebook experience.
+
+**Client Directory (client/)** - Contains the React (Vite) frontend application designed for the digital notebook experience.
 
 package.json: Lists the client-side dependencies (like react-router-dom) and scripts for managing the React application.
 
@@ -82,18 +82,33 @@ src/: Contains the source code for the BeSafe frontend.
   index.jsx: The application entry point that wraps App in BrowserRouter and StrictMode.
 
 **Server Directory (server/)**
+
 package.json: Lists server-side dependencies, including bcryptjs for security and nodemailer for parental verification emails.
+
 server.js: The main entry point that initializes the Express server, establishes the MongoDB connection, and mounts all application routes.
+
 controllers/: Contains the core business logic for handling client requests:
-  authController.js: Manages the multi-step registration flow (child signup/parent email), verification code logic, and secure user login.
-  journalController.js: Handles the creation, retrieval, and organization of a child’s digital journal entries.
-  textAnalysisController.js: Coordinates with the AI agent to analyze free-text entries for emotional context.
+
+    authController.js: Manages the multi-step registration flow (child signup/parent email), verification code logic, and secure user login.
+    
+    journalController.js: Handles the creation, retrieval, and organization of a child’s digital journal entries.
+    
+    textAnalysisController.js: Coordinates with the AI agent to analyze free-text entries for emotional context.
+    
 middleware/: Contains functions that run during the request-response cycle, such as errorHandler.js for uniform error reporting and middleware.js for JWT authentication checks.
+
 models/: Defines the data structure using Mongoose schemas:
-  User.js: Stores account details, including child/parent email links and verification status.
-  journal.js: Defines the structure for emotional logs, mood selections, and AI-generated feedback.
+
+    User.js: Stores account details, including child/parent email links and verification status.
+    
+    journal.js: Defines the structure for emotional logs, mood selections, and AI-generated feedback.
+    
 routes/: Maps API endpoints (e.g., /api/auth) to their specific controller functions.
+
 services/: Houses external utility logic:
-  emailService.js: Dedicated logic for sending 6-digit verification codes to parents.
-  journalLogic.js: Backend helper functions for processing notebook data.
+
+    emailService.js: Dedicated logic for sending 6-digit verification codes to parents.
+    
+    journalLogic.js: Backend helper functions for processing notebook data.
+    
 utils/: General helper files, such as emailTemplates.js for consistent, child-friendly email communication.
