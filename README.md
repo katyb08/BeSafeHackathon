@@ -1,4 +1,4 @@
-**"The Guardian" - QueenB X AppsFlyer - BeSafe Hackathon 2026**
+**The Guardian - QueenB X AppsFlyer - BeSafe Hackathon 2026**
 
 **"The Guardian" - Digital Emotional Notebook for Kids**
 
@@ -104,3 +104,15 @@
    * journalLogic.js: Backend helper functions for processing notebook data.
 
 * utils/: General helper files, such as emailTemplates.js for consistent, child-friendly email communication.
+
+## Project Preview
+
+### Mobile View (iPhone Mode)
+![BeSafe Registration Page](screenshots/RegistrationPage.png)
+![BeSafe Login Page](screenshots/LoginPage.png)
+![BeSafe Journal Page](screenshots/JournalPage.png)
+![BeSafe Journal Page](screenshots/JournalPage.png)
+
+
+### Video Walkthrough
+[Feature Demo: Triggering Parent Alerts after 4 Days of Persistent Low Emotional State.](screenshots/4DaysOfStruggle.mp4)
