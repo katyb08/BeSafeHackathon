@@ -1,4 +1,4 @@
-**"The Guardian" - QueenB X AppsFlyer - BeSafe Hackathon 2026**
+**The Guardian - QueenB X AppsFlyer - BeSafe Hackathon 2026**
 
 **"The Guardian" - Digital Emotional Notebook for Kids**
 
@@ -108,9 +108,10 @@
 ## Project Preview
 
 ### Mobile View (iPhone Mode)
-![BeSafe Registration Page](screenshots/RegistrationPage.jpg)
-![BeSafe Login Page](screenshots/LoginPage.jpg)
-![BeSafe Journal Page](screenshots/JournalPage.jpg)
+![BeSafe Registration Page](screenshots/RegistrationPage.png)
+![BeSafe Login Page](screenshots/LoginPage.png)
+![BeSafe Journal Page](screenshots/JournalPage.png)
+![BeSafe Journal Page](screenshots/JournalPage.png)
 
 
 ### Video Walkthrough
