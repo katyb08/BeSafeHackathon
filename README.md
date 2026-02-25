@@ -112,10 +112,9 @@
 ![BeSafe Login Page](screenshots/LoginPage.png)
 ![BeSafe Journal Page](screenshots/JournalPage.png)
 ![BeSafe Journal Page](screenshots/JournalPageAiPrompt.png)
-![Verification mail](screenshots/VerificationMail.png)
 ![Triggering Parent Alerts after 3 Days of Persistent Low Emotional State](screenshots/3DaysOfLowEmotionalState.png)
 ![Triggering Parent Alerts after 1 Day of extremely Low Emotional State](screenshots/ExtremelyLowEmotionalStateAlert.png)
+![Verification mail](screenshots/verificationMail.png)
 
-verificationMail.png
 ### Video Walkthrough
 [Feature Demo: Triggering Parent Alerts after 4 Days of Persistent Low Emotional State.](screenshots/4DaysOfStruggle.mp4)
