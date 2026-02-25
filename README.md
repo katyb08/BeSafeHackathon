@@ -104,3 +104,14 @@
    * journalLogic.js: Backend helper functions for processing notebook data.
 
 * utils/: General helper files, such as emailTemplates.js for consistent, child-friendly email communication.
+
+## Project Preview
+
+### Mobile View (iPhone Mode)
+![BeSafe Registration Page](screenshots/RegistrationPage.jpg)
+![BeSafe Login Page](screenshots/LoginPage.jpg)
+![BeSafe Journal Page](screenshots/JournalPage.jpg)
+
+
+### Video Walkthrough
+[Feature Demo: Triggering Parent Alerts after 4 Days of Persistent Low Emotional State.](screenshots/4DaysOfStruggle.mp4)
