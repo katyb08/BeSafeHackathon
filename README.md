@@ -1,17 +1,20 @@
 **"The Guardian" - QueenB X AppsFlyer - BeSafe Hackathon 2026**
 
-"The Guardian" - Digital Emotional Notebook for Kids
+**"The Guardian" - Digital Emotional Notebook for Kids**
 "The Guardian" is a full-stack application developed for the QueenB X AppsFlyer 2026 Hackathon. It is designed to provide children with a safe space to document their daily emotions while ensuring parental oversight and verification.
 
 **Project Goals**
+   * Parent-Child Dual Registration: Securely link child accounts to a parent's email, requiring a 6-digit verification code sent to the parent for account activation.
+   * Digital Emotional Notebook: Provide a structured, private journal where children can answer guided prompts (e.g., "How did you feel today?") and engage in free-text writing.
+   * Sentiment Interpretation: Utilize an AI agent to analyze the emotional tone and context of a child's entries without interfering with the writing process.
+   * Proactive Parental Alerts: Implement an automated system that notifies parents via the emailService if the AI detects significant emotional distress or specific "flags" in the text.
+   * Child-Friendly Personalization: Enhance engagement through customizable child avatars and a supportive UI designed specifically for younger users.
 
-Parent-Child Dual Registration: Child accounts are linked to a parent's email, requiring a 6-digit verification code sent to the parent to activate the account.
-
-Digital Notebook: A structured journal where children answer guided questions (e.g., "How did you feel today?") and engage in free-text writing.
-
-AI Agent Integration: Free-text entries are analyzed by an AI agent to help interpret the child's emotional state and provide context.
-
-Safety & Verification: Ensuring only verified users can access the journal features.
+**Privacy & Ethics**
+   * **Silent Observation Only:** The AI agent functions strictly as a background observer; there is no scenario where a child "chats" or communicates with the AI.
+   * **Zero AI-to-Child Feedback:** To ensure the notebook remains a natural space for expression, the AI never provides direct responses, advice, or feedback to the child.
+   * **Data Sensitivity:** Analysis is performed solely to provide context for parents; children's raw entries are treated as private data within the application.
+   * **Safety First Architecture:** By removing direct interaction between the child and the AI, we eliminate the risk of hallucinated or inappropriate AI responses being shown to the user.
 
 **Tech Stack**
 
@@ -78,32 +81,25 @@ Safety & Verification: Ensuring only verified users can access the journal featu
 
 **Server Directory (server/)**
 
-package.json: Lists server-side dependencies, including bcryptjs for security and nodemailer for parental verification emails.
+* package.json: Lists server-side dependencies, including bcryptjs for security and nodemailer for parental verification emails.
 
-server.js: The main entry point that initializes the Express server, establishes the MongoDB connection, and mounts all application routes.
+* server.js: The main entry point that initializes the Express server, establishes the MongoDB connection, and mounts all application routes.
 
-controllers/: Contains the core business logic for handling client requests:
+* controllers/: Contains the core business logic for handling client requests:
+   * authController.js: Manages the multi-step registration flow (child signup/parent email), verification code logic, and secure user login.
+   * journalController.js: Handles the creation, retrieval, and organization of a child’s digital journal entries.
+   * textAnalysisController.js: Coordinates with the AI agent to analyze free-text entries for emotional context.
 
-    authController.js: Manages the multi-step registration flow (child signup/parent email), verification code logic, and secure user login.
-    
-    journalController.js: Handles the creation, retrieval, and organization of a child’s digital journal entries.
-    
-    textAnalysisController.js: Coordinates with the AI agent to analyze free-text entries for emotional context.
-    
-middleware/: Contains functions that run during the request-response cycle, such as errorHandler.js for uniform error reporting and middleware.js for JWT authentication checks.
+* middleware/: Contains functions that run during the request-response cycle, such as errorHandler.js for uniform error reporting and middleware.js for JWT authentication checks.
 
-models/: Defines the data structure using Mongoose schemas:
+* models/: Defines the data structure using Mongoose schemas:
+   * User.js: Stores account details, including child/parent email links and verification status.
+   * journal.js: Defines the structure for emotional logs, mood selections, and AI-generated feedback.
+    
+* routes/: Maps API endpoints (e.g., /api/auth) to their specific controller functions.
 
-    User.js: Stores account details, including child/parent email links and verification status.
-    
-    journal.js: Defines the structure for emotional logs, mood selections, and AI-generated feedback.
-    
-routes/: Maps API endpoints (e.g., /api/auth) to their specific controller functions.
+* services/: Houses external utility logic:
+   * emailService.js: Dedicated logic for sending 6-digit verification codes to parents.
+   * journalLogic.js: Backend helper functions for processing notebook data.
 
-services/: Houses external utility logic:
-
-    emailService.js: Dedicated logic for sending 6-digit verification codes to parents.
-    
-    journalLogic.js: Backend helper functions for processing notebook data.
-    
-utils/: General helper files, such as emailTemplates.js for consistent, child-friendly email communication.
+* utils/: General helper files, such as emailTemplates.js for consistent, child-friendly email communication.
