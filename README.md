@@ -1,6 +1,7 @@
 **"The Guardian" - QueenB X AppsFlyer - BeSafe Hackathon 2026**
 
 **"The Guardian" - Digital Emotional Notebook for Kids**
+
 "The Guardian" is a full-stack application developed for the QueenB X AppsFlyer 2026 Hackathon. It is designed to provide children with a safe space to document their daily emotions while ensuring parental oversight and verification.
 
 **Project Goals**
